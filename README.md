@@ -1,103 +1,103 @@
-# 🧠 Conceptos básicos en Java (para quien sabe Python)
+# 🧠 Java Basics (for Python developers)
 
-## 📦 Clase (`class`)
+## 📦 Class (`class`)
 
-Una **clase** en Java es como una **clase en Python**: es una plantilla para crear objetos.
+A **class** in Java is like a **class in Python**: a blueprint for creating objects.
 
 ```java
-public class Persona {
-    // Atributos (variables de instancia)
-    String nombre;
-    int edad;
+public class Person {
+    // Attributes (instance variables)
+    String name;
+    int age;
 
-    // Método (función dentro de una clase)
-    public void saludar() {
-        System.out.println("Hola, mi nombre es " + nombre);
+    // Method (function inside a class)
+    public void greet() {
+        System.out.println("Hi, my name is " + name);
     }
 }
 ```
 
-🟡 En Python sería:
+🟡 In Python:
 
 ```python
-class Persona:
-    def __init__(self, nombre, edad):
-        self.nombre = nombre
-        self.edad = edad
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-    def saludar(self):
-        print(f"Hola, mi nombre es {self.nombre}")
+    def greet(self):
+        print(f"Hi, my name is {self.name}")
 ```
 
 ---
 
-## 🔁 Método (`method`)
+## 🔁 Method
 
-Un **método** en Java es como una **función dentro de una clase**, similar a los métodos en Python.
+A **method** in Java is a **function inside a class**, similar to methods in Python.
 
 ```java
-public void saludar() {
-    System.out.println("Hola");
+public void greet() {
+    System.out.println("Hi");
 }
 ```
 
-📌 Los métodos pueden tener un tipo de retorno (como `int`, `void`, `String`, etc.) y pueden recibir parámetros.
+📌 Methods can have a return type (`int`, `void`, `String`, etc.) and can take parameters.
 
 ---
 
 ## 🧮 Variable
 
-Una **variable** en Java es una forma de almacenar datos. Puede estar dentro de una clase, de un método, o como parámetro.
+A **variable** in Java stores data. It can be inside a class, inside a method, or passed as a parameter.
 
 ```java
-int edad = 25;       // Variable local dentro de un método
-String nombre = "Ana";
+int age = 25;       // Local variable inside a method
+String name = "Ana";
 ```
 
-🔵 Las variables tienen **tipo**: `int`, `String`, `double`, `boolean`, etc.
+🔵 Variables must have a **type**: `int`, `String`, `double`, `boolean`, etc.
 
 ---
 
-## 🔐 Variable de instancia
+## 🔐 Instance Variable
 
-Una **variable de instancia** (también llamada **atributo**) es una variable que pertenece a un **objeto**. Se define dentro de una clase, pero fuera de los métodos.
+An **instance variable** (also called a **field** or **attribute**) belongs to an **object**. It's defined inside a class but outside any methods.
 
 ```java
-public class Persona {
-    String nombre;   // Variable de instancia
-    int edad;        // Variable de instancia
+public class Person {
+    String name;   // Instance variable
+    int age;       // Instance variable
 }
 ```
 
-📌 Equivale a `self.nombre` o `self.edad` en Python.
+📌 Equivalent to `self.name` or `self.age` in Python.
 
 ---
 
-## 🎯 Parámetro
+## 🎯 Parameter
 
-Un **parámetro** en Java es una variable que se pasa a un método o constructor.
+A **parameter** in Java is a variable passed into a method or constructor.
 
 ```java
-public void saludarConNombre(String nombre) {
-    System.out.println("Hola " + nombre);
+public void greetWithName(String name) {
+    System.out.println("Hi " + name);
 }
 ```
 
-🟢 En Python sería:
+🟢 In Python:
 
 ```python
-def saludar_con_nombre(nombre):
-    print(f"Hola {nombre}")
+def greet_with_name(name):
+    print(f"Hi {name}")
 ```
 
 ---
 
-# ✅ Resumen rápido
+# ✅ Quick Summary
 
-| Concepto en Java         | ¿Qué es?                                              | Equivalente en Python |
-|--------------------------|-------------------------------------------------------|------------------------|
-| `class`                  | Plantilla para objetos                                | `class`               |
-| Método (`method`)        | Función dentro de una clase                           | Método                |
-| Variable                 | Almacena datos (con tipo)                             | Variable              |
-| Variable de instancia    | Variable propia del objeto (`this.variable`)          | `self.variable`       |
-| Parámetro                | Dato que se pasa a un método o constructor            | Parámetro             |
+| Java Concept             | What is it?                                           | Python Equivalent     |
+|--------------------------|--------------------------------------------------------|------------------------|
+| `class`                  | Blueprint for objects                                  | `class`               |
+| Method                   | Function inside a class                                | Method                |
+| Variable                 | Stores data (with type)                                | Variable              |
+| Instance Variable        | Variable that belongs to the object (`this.variable`)  | `self.variable`       |
+| Parameter                | Value passed to a method or constructor                | Parameter             |
