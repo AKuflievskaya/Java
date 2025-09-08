@@ -1,9 +1,3 @@
-# Java – Capítulos 3–8 (todo combinado, comentarios simples)
-
-> Objetivo: explicaciones claras para principiantes. Copia-pega en tu `.md`.
-
----
-
 # Chapter 3 – Java Basics (Explained for Absolute Beginners)
 
 ## 1) Classes and Objects
