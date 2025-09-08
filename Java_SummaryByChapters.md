@@ -675,3 +675,330 @@ public class Overload {
     public void log(String m, int c) { System.out.println("S+I: " + m + " " + c); }
 
     public static void main(String[] args) {
+        Overload o = new Overload();
+        o.log("hello");
+        o.log(200);
+        o.log("ok", 200);
+    }
+}
+```
+
+---
+
+## 7. Constructors and `this()`
+Chain constructors for DRY initialization.
+
+```java
+public class Dog {
+    private final String name;
+    private final int age;
+
+    public Dog() {
+        this("NoName", 0);         // calls the other constructor (must be first line)
+    }
+
+    public Dog(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void info() {
+        System.out.println(name + " (" + age + ")");
+    }
+
+    public static void main(String[] args) {
+        new Dog().info();
+        new Dog("Rex", 5).info();
+    }
+}
+```
+
+---
+
+## 8. Encapsulation & Immutability
+Hide fields; expose controlled access; prefer immutable data where reasonable.
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public final class Team {
+    private final String name;         // immutable
+    private final List<String> members;// defensive copies for collections
+
+    public Team(String name, List<String> members) {
+        this.name = name;
+        // Create an unmodifiable copy to protect internal state
+        this.members = Collections.unmodifiableList(new ArrayList<>(members));
+    }
+
+    public String getName() { return name; }
+    public List<String> getMembers() { return members; } // returns safe unmodifiable view
+}
+```
+
+---
+
+# Chapter 7 – Class Design
+
+## 1. Inheritance Basics
+A class can extend a single parent; it inherits accessible members.
+
+```java
+class Animal {
+    private int age;
+    public int getAge() { return age; }
+    public void setAge(int a) { this.age = a; }
+}
+
+class Lion extends Animal {
+    public void roar() {
+        // getAge() is inherited (public in parent)
+        System.out.println("Roar! I am " + getAge() + " years old");
+    }
+}
+```
+
+---
+
+## 2. Class Visibility & File Rules
+One public top-level class per file; file name must match the public class.
+
+```java
+// File: Zoo.java
+public class Zoo { } // this file must be named Zoo.java
+// package-private (no modifier) classes can share the file but are less common for beginners
+class Pen { }
+```
+
+---
+
+## 3. Constructors & `super()`
+Constructors can call parent constructors; if omitted, `super()` is inserted.
+
+```java
+class Base {
+    Base() { System.out.println("Base ctor"); }
+}
+
+class Derived extends Base {
+    Derived() {
+        super();               // calls Base()
+        System.out.println("Derived ctor");
+    }
+
+    public static void main(String[] args) {
+        new Derived();
+    }
+}
+```
+
+---
+
+## 4. Overriding Methods
+Child replaces parent behavior; annotate with `@Override`.
+
+```java
+class Bird {
+    public void fly() { System.out.println("Bird flying"); }
+}
+class Eagle extends Bird {
+    @Override
+    public void fly() { System.out.println("Eagle soaring"); }
+}
+```
+
+---
+
+## 5. Abstract Classes
+Cannot be instantiated; may contain abstract methods.
+
+```java
+abstract class Shape {
+    abstract double area(); // must be implemented by concrete subclasses
+}
+class Circle extends Shape {
+    private final double r;
+    Circle(double r){ this.r = r; }
+    double area(){ return Math.PI * r * r; }
+}
+```
+
+---
+
+## 6. Interfaces (Contracts)
+Classes implement interfaces; can implement multiple interfaces.
+
+```java
+interface CanFly { void fly(); }
+
+class Sparrow implements CanFly {
+    @Override
+    public void fly() {
+        System.out.println("Sparrow flaps!");
+    }
+}
+```
+
+---
+
+## 7. Polymorphism & Casting
+Reference type controls visible methods; runtime type controls implementation.
+
+```java
+class Animal2 { void sound(){ System.out.println("..."); } }
+class Dog2 extends Animal2 { @Override void sound(){ System.out.println("Woof"); } }
+
+public class Poly {
+    public static void main(String[] args) {
+        Animal2 a = new Dog2(); // upcast (implicit)
+        a.sound();              // "Woof" (dynamic dispatch)
+
+        // Downcast (explicit) - only safe if object is actually that type
+        if (a instanceof Dog2) {
+            Dog2 d = (Dog2) a;
+            d.sound();
+        }
+    }
+}
+```
+
+---
+
+## 8. Lambdas (Intro with Functional Interfaces)
+Use lambdas with interfaces that have a single abstract method.
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class LambdasIntro {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("a", "b", "c");
+        // s -> System.out.println(s) is a lambda implementing Consumer<String>#accept
+        list.forEach(s -> System.out.println(s));
+    }
+}
+```
+
+---
+
+# Chapter 8 – Exceptions
+
+## 1. Throwing & Declaring
+`throw` raises an exception; `throws` declares it to callers.
+
+```java
+public class Throwing {
+    static void risky() throws Exception {
+        // Signal an error condition to the caller
+        throw new Exception("Something went wrong");
+    }
+
+    public static void main(String[] args) {
+        try {
+            risky();
+        } catch (Exception e) {
+            System.out.println("Handled: " + e.getMessage());
+        }
+    }
+}
+```
+
+---
+
+## 2. Checked vs Unchecked vs Errors
+- **Checked** (subclasses of `Exception`, excluding `RuntimeException`): must handle or declare.
+- **Unchecked** (`RuntimeException` and its subclasses): optional to declare.
+- **Errors** (`Error`): serious problems; generally do not catch.
+
+```java
+public class Kinds {
+    static void checkedExample() throws java.io.IOException {
+        // Checked: must be declared or handled
+        throw new java.io.IOException("I/O failed");
+    }
+
+    static void uncheckedExample() {
+        // Unchecked: no need to declare; may happen at runtime
+        throw new IllegalArgumentException("Bad argument");
+    }
+}
+```
+
+---
+
+## 3. try-catch-finally
+Catch specific exceptions and use `finally` for cleanup.
+
+```java
+import java.io.*;
+
+public class TryCatchFinally {
+    public static void main(String[] args) {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("data.txt"));
+            System.out.println(br.readLine());
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("I/O error");
+        } finally {
+            // Always attempt to close resources
+            try {
+                if (br != null) br.close();
+            } catch (IOException e) {
+                // If closing fails, log and move on
+                System.out.println("Close failed");
+            }
+        }
+    }
+}
+```
+
+> Tip: Prefer **try-with-resources** for auto-closing resources.
+
+```java
+import java.io.*;
+
+public class TryWithResources {
+    public static void main(String[] args) {
+        // The resource is closed automatically at the end of the try block
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            System.out.println("I/O problem: " + e.getMessage());
+        }
+    }
+}
+```
+
+---
+
+## 4. Printing Exceptions & Best Practices
+Always log useful info; avoid swallowing exceptions silently.
+
+```java
+public class Printing {
+    public static void main(String[] args) {
+        try {
+            Integer.parseInt("not-a-number"); // will throw NumberFormatException
+        } catch (Exception e) {
+            System.out.println(e);              // type + message
+            System.out.println(e.getMessage()); // message only
+            e.printStackTrace();                // full stack trace with call chain
+        }
+    }
+}
+```
+
+---
+
+## 🔑 Key Takeaways
+- Use specific exception types and order `catch` from most specific to general.
+- Prefer try-with-resources for I/O.
+- `throw` to raise; `throws` to declare.
+- Do not use exceptions for normal control flow.
+
