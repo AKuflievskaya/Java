@@ -1,6 +1,6 @@
 # Chapter 3 – Java Basics (Explained for Absolute Beginners)
 
-## 1) Classes and Objects
+## 3.1 Classes and Objects
 ```java
 // File: Person.java
 // A "class" is a blueprint to build objects (like a cookie cutter).
@@ -34,7 +34,7 @@ public class Person {
 
 ---
 
-## 2) The `main` Method
+## 3.2 The `main` Method
 ```java
 // The JVM (Java Virtual Machine) looks for this exact method to start your program.
 public class App {
@@ -53,7 +53,7 @@ public class App {
 
 ---
 
-## 3) Comments
+## 3.3 Comments
 ```java
 public class CommentsDemo {
     public static void main(String[] args) {
@@ -78,7 +78,7 @@ public class CommentsDemo {
 
 ---
 
-## 4) Packages and Imports
+## 3.4 Packages and Imports
 ```java
 // File path should match the package (folders): com/example/util/RandomExample.java
 package com.example.util; // Groups related classes; helps avoid name conflicts.
@@ -96,7 +96,7 @@ public class RandomExample {
 
 ---
 
-## 5) Constructors
+## 3.5 Constructors
 ```java
 // A constructor sets up the first values of an object.
 public class Animal {
@@ -130,7 +130,7 @@ public class Animal {
 
 ---
 
-## 6) Data Types (Primitives vs Objects)
+## 3.6 Data Types (Primitives vs Objects)
 ```java
 public class TypesDemo {
     public static void main(String[] args) {
@@ -153,7 +153,7 @@ public class TypesDemo {
 
 ---
 
-## 7) Variables: Local, Instance, Static
+## 3.7 Variables: Local, Instance, Static
 ```java
 public class Vars {
     // STATIC field: one shared copy for the whole class (all objects see the same number).
@@ -184,7 +184,7 @@ public class Vars {
 
 ---
 
-## 8) Initialization Order (Who runs first?)
+## 3.8 Initialization Order (Who runs first?)
 ```java
 public class InitOrder {
     // STEP 1: static stuff runs once when the class is loaded.
@@ -219,7 +219,7 @@ public class InitOrder {
 
 ---
 
-## 9) Garbage Collection (GC)
+## 3.9 Garbage Collection (GC)
 ```java
 public class GCDemo {
     static class Big {
@@ -241,7 +241,7 @@ public class GCDemo {
 
 # Chapter 4 – Operators and Statements (Step-by-step)
 
-## 1) Operators Overview (What they do)
+## 4.1 Operators Overview (What they do)
 ```java
 public class Operators {
     public static void main(String[] args) {
@@ -274,7 +274,7 @@ public class Operators {
 
 ---
 
-## 2) Arithmetic, Assignment, Casting (Converting types)
+## 4.2 Arithmetic, Assignment, Casting (Converting types)
 ```java
 public class ArithmeticCasting {
     public static void main(String[] args) {
@@ -296,7 +296,7 @@ public class ArithmeticCasting {
 
 ---
 
-## 3) Relational, Equality, Logical (Comparing values)
+## 4.3 Relational, Equality, Logical (Comparing values)
 ```java
 public class Comparisons {
     public static void main(String[] args) {
@@ -321,7 +321,7 @@ public class Comparisons {
 
 ---
 
-## 4) Control Flow (if, switch, while, do-while, for, for-each)
+## 4.4 Control Flow (if, switch, while, do-while, for, for-each)
 ```java
 public class Flow {
     public static void main(String[] args) {
@@ -377,7 +377,7 @@ public class Flow {
 
 ---
 
-## 5) break / continue / labels (Controlling loops)
+## 4.5 break / continue / labels (Controlling loops)
 ```java
 public class BreakContinue {
     public static void main(String[] args) {
@@ -409,7 +409,7 @@ public class BreakContinue {
 
 # Chapter 5 – Java API Essentials (Must-know tools)
 
-## 1) String (Immutable text)
+## 5.1 String (Immutable text)
 ```java
 public class StringDemo {
     public static void main(String[] args) {
@@ -429,7 +429,7 @@ public class StringDemo {
 
 ---
 
-## 2) StringBuilder (Mutable text for speed)
+## 5.2 StringBuilder (Mutable text for speed)
 ```java
 public class StringBuilderDemo {
     public static void main(String[] args) {
@@ -446,7 +446,7 @@ public class StringBuilderDemo {
 
 ---
 
-## 3) Arrays (Fixed-size lists)
+## 5.3 Arrays (Fixed-size lists)
 ```java
 import java.util.Arrays;
 
@@ -469,7 +469,7 @@ public class ArraysDemo {
 
 ---
 
-## 4) ArrayList (Growable list)
+## 5.4 ArrayList (Growable list)
 ```java
 import java.util.ArrayList;
 
@@ -494,7 +494,7 @@ public class ArrayListDemo {
 
 ---
 
-## 5) Dates and Times (java.time)
+## 5.5 Dates and Times (java.time)
 ```java
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -531,7 +531,7 @@ public class TimeDemo {
 
 # Chapter 6 – Methods and Encapsulation (Clean, safe code)
 
-## 1) Method Structure (What each part means)
+## 6.1 Method Structure (What each part means)
 ```java
 public class Methods {
     // public: anyone can call it
@@ -557,7 +557,7 @@ public class Methods {
 
 ---
 
-## 2) Varargs (Accept many values easily)
+## 6.2 Varargs (Accept many values easily)
 ```java
 public class VarargsDemo {
     // 'String... parts' means you can pass 0, 1, or many Strings.
@@ -580,7 +580,7 @@ public class VarargsDemo {
 
 ---
 
-## 3) Access Modifiers (Who can see what?)
+## 6.3 Access Modifiers (Who can see what?)
 ```java
 public class Access {
     private   int secret = 42; // only this class
@@ -595,7 +595,7 @@ public class Access {
 
 ---
 
-## 4) Static vs Instance (Shared vs personal)
+## 6.4 Static vs Instance (Shared vs personal)
 ```java
 public class Counter {
     private static int total = 0; // one shared number for ALL Counter objects
@@ -620,7 +620,7 @@ public class Counter {
 
 ---
 
-## 5) Pass-by-Value (Important truth about Java)
+## 6.5 Pass-by-Value (Important truth about Java)
 ```java
 public class PassByValue {
     static class Box { int v; }
@@ -642,7 +642,7 @@ public class PassByValue {
 
 ---
 
-## 6) Overloading (Same name, different inputs)
+## 6.6 Overloading (Same name, different inputs)
 ```java
 public class Overload {
     // Different parameter types/counts -> allowed.
@@ -661,7 +661,7 @@ public class Overload {
 
 ---
 
-## 7) Constructors and `this()` (Avoid repeating setup)
+## 6.7 Constructors and `this()` (Avoid repeating setup)
 ```java
 public class Dog {
     private final String name;
@@ -690,7 +690,7 @@ public class Dog {
 
 ---
 
-## 8) Encapsulation & Immutability (Protect your data)
+## 6.8 Encapsulation & Immutability (Protect your data)
 ```java
 import java.util.ArrayList;
 import java.util.Collections;
@@ -716,7 +716,7 @@ public final class Team {
 
 # Chapter 7 – Class Design (How classes relate)
 
-## 1) Inheritance (Child gets features from Parent)
+## 7.1 Inheritance (Child gets features from Parent)
 ```java
 class Animal {
     private int age;
@@ -734,7 +734,7 @@ class Lion extends Animal {
 
 ---
 
-## 2) One public class per file (File name must match)
+## 7.2 One public class per file (File name must match)
 ```java
 // File: Zoo.java
 public class Zoo { } // public class name == file name
@@ -744,7 +744,7 @@ class Pen { }
 
 ---
 
-## 3) Constructors & `super()` (Call parent's setup)
+## 7.3 Constructors & `super()` (Call parent's setup)
 ```java
 class Base {
     Base() { System.out.println("Base constructor"); }
@@ -764,7 +764,7 @@ class Derived extends Base {
 
 ---
 
-## 4) Overriding (Replace parent behavior)
+## 7.4 Overriding (Replace parent behavior)
 ```java
 class Bird {
     public void fly() { System.out.println("Bird flying"); }
@@ -777,7 +777,7 @@ class Eagle extends Bird {
 
 ---
 
-## 5) Abstract Classes (Templates you must complete)
+## 7.5 Abstract Classes (Templates you must complete)
 ```java
 abstract class Shape {
     // No body -> child classes must write the code for this method.
@@ -792,7 +792,7 @@ class Circle extends Shape {
 
 ---
 
-## 6) Interfaces (Promises)
+## 7.6 Interfaces (Promises)
 ```java
 // An interface says: "any class that implements me WILL have these methods".
 interface CanFly { void fly(); }
@@ -805,7 +805,7 @@ class Sparrow implements CanFly {
 
 ---
 
-## 7) Polymorphism & Casting (Use parent types to hold child objects)
+## 7.7 Polymorphism & Casting (Use parent types to hold child objects)
 ```java
 class Animal2 { void sound(){ System.out.println("..."); } }
 class Dog2 extends Animal2 { @Override void sound(){ System.out.println("Woof"); } }
@@ -826,7 +826,7 @@ public class Poly {
 
 ---
 
-## 8) Lambdas (Short functions)
+## 7.8 Lambdas (Short functions)
 ```java
 import java.util.Arrays;
 import java.util.List;
@@ -846,7 +846,7 @@ public class LambdasIntro {
 
 # Chapter 8 – Exceptions (Handling problems)
 
-## 1) Throwing & Declaring (Say there is a problem)
+## 8.1 Throwing & Declaring (Say there is a problem)
 ```java
 public class Throwing {
     // 'throws Exception' warns callers: "I might fail, you must handle me."
@@ -867,7 +867,7 @@ public class Throwing {
 
 ---
 
-## 2) Types of problems (Checked / Unchecked / Errors)
+## 8.2 Types of problems (Checked / Unchecked / Errors)
 ```java
 public class Kinds {
     static void checkedExample() throws java.io.IOException {
@@ -886,7 +886,7 @@ public class Kinds {
 
 ---
 
-## 3) try-catch-finally (Handle + Cleanup)
+## 8.3 try-catch-finally (Handle + Cleanup)
 ```java
 import java.io.*;
 
@@ -932,7 +932,7 @@ public class TryWithResources {
 
 ---
 
-## 4) Printing Exceptions (See what happened)
+## 8.4 Printing Exceptions (See what happened)
 ```java
 public class Printing {
     public static void main(String[] args) {
