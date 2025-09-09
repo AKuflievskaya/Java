@@ -1,0 +1,37 @@
+package capitulo6.designingmethods;
+
+public class DesigningMethods {
+
+    /*
+     * Estructura de un método (con etiquetas):
+     * [Modificador de acceso] [Otros modificadores] [Tipo de retorno] [Nombre] ( [Lista de parámetros] ) [throws ...] { [Cuerpo] }
+     */
+    public static int methodName(int a, int b) { // public static = modificadores; int = tipo de retorno; methodName = nombre; (int a, int b) = parámetros
+        return 0; // cuerpo (valor “stub” solo para compilar)
+    }
+
+    // Ejemplos adicionales para ver otras piezas de la estructura:
+
+    // 1) Método que “hace algo” con los parámetros
+    public static int suma(int a, int b) {
+        return a + b;
+    }
+
+    // 2) Método con 'throws' opcional
+    protected double divide(int a, int b) throws ArithmeticException {
+        if (b == 0) throw new ArithmeticException("divide by zero");
+        return (double) a / b;
+    }
+
+    // 3) Método con varargs (parámetros variables)
+    static int max(int primero, int... otros) {
+        int m = primero;
+        for (int x : otros) if (x > m) m = x;
+        return m;
+    }
+
+    // 4) Método genérico (con tipo de retorno parametrizado)
+    public static <T> T identidad(T valor) {
+        return valor;
+    }
+}
