@@ -219,36 +219,37 @@ memoria, la CPU, el acceso a archivos, etc.
       - Está obsoleto en Java moderno.  
     - Alternativa recomendada: usar *`AutoCloseable`* + *try-with-resources*.
 
-# 4. Operadores y sentencias
+# 4. Operadores y Sentencias en Java
 
-- **Tipos de operadores:** unario, binario y ternario + pueden aplicarse a uno, dos o tres operandos.
-  | Operador                        | Símbolos y ejemplos                                |
-  |---------------------------------|----------------------------------------------------|
-  | Operadores post-unarios          | Expresión++, Expresión--                           |
-  | Operadores pre-unarios           | ++Expresión, --Expresión                           |
-  | Operadores unarios               | +, -, !                                           |
-  | Multiplicación, División, Módulo | *, /, %                                           |
-  | Suma, Resta                      | +, -                                              |
-  | Operadores de cambio             | <<, >>, >>>                                       |
-  | Operadores relacionales          | <, >, <=, >=, instanceof                          |
-  | Igual, Distinto                  | ==, !=                                            |
-  | Operadores lógicos               | &, ^, \|                                          |
-  | Operadores lógicos de cortocircuito | &&, \|\|                                       |
-  | Operadores ternarios             | Expresión booleana ? expresión1 : expresión2      |
-  | Operadores de asignación         | =, +=, -=, *=, /=, %=, &=, ^=, !=, <<=, >>=, >>>= |
+---
 
-  ```Java
-  System.out.print(9 / 3); // Outputs 3
-  System.out.print(9 % 3); // Outputs 0
-  System.out.print(10 / 3); // Outputs 3
-  System.out.print(10 % 3); // Outputs 1
-  System.out.print(11 / 3); // Outputs 3
-  System.out.print(11 % 3); // Outputs 2
-  System.out.print(12 / 3); // Outputs 4
-  System.out.print(12 % 3); // Outputs 0
-  ```
+## 4.1 Operadores de Java
+- **Unarios** → actúan sobre 1 operando (`+x`, `-x`, `!x`, `++x`, `--x`)
+- **Binarios** → actúan sobre 2 operandos (`x + y`, `x * y`)
+- **Ternario** → `condicion ? expr1 : expr2`
 
+---
 
+## 4.2 Operadores Aritméticos
+| Operador | Descripción       | Ejemplo                | Resultado |
+|----------|-------------------|------------------------|-----------|
+| `+`      | Suma / Concatenar | `2 + 3`, `"a"+"b"`     | `5`, `"ab"` |
+| `-`      | Resta             | `5 - 2`                | `3` |
+| `*`      | Multiplicación    | `4 * 3`                | `12` |
+| `/`      | División entera   | `7 / 2`                | `3` |
+| `%`      | Módulo (resto)    | `7 % 2`                | `1` |
+
+---
+
+## 4.2.2 Promoción Numérica
+Reglas cuando se mezclan tipos:
+- `byte`, `short`, `char` → se convierten a `int`.
+- Si hay `int` y `long` → resultado `long`.
+- Si hay `float` y `double` → resultado `double`.
+
+```java
+byte a = 5, b = 6;
+int r = a + b; // promoción a int
 
 
 
