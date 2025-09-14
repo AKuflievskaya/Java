@@ -219,44 +219,199 @@ memoria, la CPU, el acceso a archivos, etc.
       - Está obsoleto en Java moderno.  
     - Alternativa recomendada: usar *`AutoCloseable`* + *try-with-resources*.
 
-# 4. Operadores y Sentencias en Java
+# 4. Operadores y Sentencias 
 
----
+## Operadores
+- **Aritméticos**: `+`, `-`, `*`, `/`, `%`
+  ```java
+  int a = 10, b = 3;
+  System.out.println(a / b); // 3
+  System.out.println(a % b); // 1
+  ```
+- **Unarios:** `x`,`-`,`++`,`--`,`!`
+  ```Java
+  int x=5;
+  System.out.println(++x); // 6
+  System.out.println(x--); // 6 (luego 5)
+- **Relacionales:** `<`, `<=`, `>`, `>=`, `==`, '!='
+- **Lógicos:** `&&`, `||`, `!`
+- **Asignación compuesta:** `+-`, `-=`, `*=`, `/=`
+- **Casting:** `(int) 3.7` -> `3`
 
-## 4.1 Operadores de Java
-- **Unarios** → actúan sobre 1 operando (`+x`, `-x`, `!x`, `++x`, `--x`)
-- **Binarios** → actúan sobre 2 operandos (`x + y`, `x * y`)
-- **Ternario** → `condicion ? expr1 : expr2`
+## Sentencias de control 
+- **if-else**
+  ```Java
+  if (x > 0) System.out.println("positivo");
+  else System.out.println("no positivo");
+  ```
+- **switch**
+  ```Java
+  String fruta = "Manzana";
+  switch(fruta) {
+    case "Manzana": System.out.println("Roja"); break;
+    case "Pera": System.out.println("Verde"); break;
+    default: System.out.println("Desconocida");
+  }
+  ```
+- **while / do-while / for / for-each**
+  ```Java
+  for(int i=0; i<3; i++) System.out.println(i);
+  for(String s: lista) System.out.println(s);
+  ```
+- **break y continue** (con etiquetas opcionales)
 
----
+# 5. API de Java
 
-## 4.2 Operadores Aritméticos
-| Operador | Descripción       | Ejemplo                | Resultado |
-|----------|-------------------|------------------------|-----------|
-| `+`      | Suma / Concatenar | `2 + 3`, `"a"+"b"`     | `5`, `"ab"` |
-| `-`      | Resta             | `5 - 2`                | `3` |
-| `*`      | Multiplicación    | `4 * 3`                | `12` |
-| `/`      | División entera   | `7 / 2`                | `3` |
-| `%`      | Módulo (resto)    | `7 % 2`                | `1` |
+## Strings
+- Inmutables -> crean nuevos objetos al modificarlos
+- Métodos : `length()` , `charAt()` , `substring()`, `indexOf()`, `equals()`
+  ```Java
+  String s1 = "Hola";
+  String s2 = s1.concat(" Mundo");
+  System.out.println(s1); // Hola
+  System.out.println(s2); // Hola Mundo
+  ```
+## StringBuilder (mutable)
 
----
+```Java
+StringBuilder sb = new StringBuilder("Hola");
+sb.append(" Mundo");
+System.out.println(sb); // Hola Mundo
+```
 
-## 4.2.2 Promoción Numérica
-Reglas cuando se mezclan tipos:
-- `byte`, `short`, `char` → se convierten a `int`.
-- Si hay `int` y `long` → resultado `long`.
-- Si hay `float` y `double` → resultado `double`.
+## Arrays
+```Java
+int[] nums = {3,1,2};
+Arrays.sort(nums); // [1,2,3]
+System.out.println(Arrays.binarySearch(nums, 2)); // 1
+```
 
-```java
-byte a = 5, b = 6;
-int r = a + b; // promoción a int
+## ArrayList
+```Java
+ArrayList<String> lista = new ArrayList<>();
+lista.add("Uno");
+lista.add("Dos");
+System.out.println(lista.get(0)); // Uno
+```
 
+## Fechas y horas (java.time)
+```Java
+LocalDate hoy = LocalDate.now();
+LocalDate cumple = LocalDate.of(2025, 5, 10);
+Period p = Period.between(cumple, hoy);
+System.out.println(p.getMonths() + " meses");
+```
 
+# 6. Métodos y Encapsulamiento
 
+## Definición de método
+```Java
+public int sumar(int a, int b) { return a + b; }
+```
 
+## Sobrecarga
+```Java
+public int sumar(int a, int b, int c) { return a+b+c; }
+```
 
+## Modificadores de acceso 
+| Modificador | Acceso permitido       |
+| ----------- | ---------------------- |
+| private     | Solo en la misma clase |
+| default     | Mismo paquete          |
+| protected   | Paquete + subclases    |
+| public      | Desde cualquier lugar  |
 
+## static vs instancia
+```Java
+class Contador {
+  static int total = 0;
+  int id;
+  Contador(int id) { this.id = id; total++; }
+}
+```
+## Encapsulación 
+```Java
+class Persona {
+  private String nombre;
+  public String getNombre() { return nombre; }
+  public void setNombre(String n) { nombre = n; }
+}
+```
 
+## Constructores 
+- Se ejecutan al crear objeto
+- Se pueden sobrecargar
+- Si no defines -> se crea uno por defecto
 
+# 7. Diseño de clases
 
+## Herencia
+```Java
+class Animal { void sonido(){ System.out.println("..."); } }
+class Perro extends Animal { void sonido(){ System.out.println("Guau"); } }
+```
 
+## Clases abstractas
+```Java
+abstract class Figura {
+  abstract double area();
+}
+class Circulo extends Figura {
+  double radio;
+  Circulo(double r){ this.radio = r; }
+  double area(){ return Math.PI * radio * radio; }
+}
+```
+
+## Interfaces
+```Java
+interface Volador { void volar(); }
+class Pajaro implements Volador {
+  public void volar(){ System.out.println("Vuelo"); }
+}
+```
+
+## Polimorfismo 
+```Java
+Animal a = new Perro();
+a.sonido(); // Guau
+```
+
+## Lambdas 
+```Java
+List<String> lista = Arrays.asList("uno","dos");
+lista.forEach(s -> System.out.println(s.toUpperCase()));
+```
+
+# 8. Excepciones 
+
+## Concepto
+- Mecanismo para manejar errores en tiempo de ejecución.
+- Separan lógica normal de la de error.
+
+## Tipos
+- **Checked (controladas)**: IOException, SQLException.
+- **Unchecked (Runtime)**: ´NullPointerException´, ´ArithmeticException´.
+- **Errors**: problemas graves de la JVM.
+
+## Manejo 
+```Java
+try {
+  int r = 10 / 0;
+} catch(ArithmeticException e) {
+  System.out.println("División por cero");
+} finally {
+  System.out.println("Siempre se ejecuta");
+}
+```
+
+## Lanzar excepción 
+```Java
+throw new IllegalArgumentException("Dato inválido");
+```
+
+## Buenas prácticas 
+- No usar excepciones como control de flujo
+- Capturar solo lo que se pueda manejar
+- Registrar la excepción (`e.printStackTrace()` o logs).
