@@ -233,11 +233,50 @@ memoria, la CPU, el acceso a archivos, etc.
   int x=5;
   System.out.println(++x); // 6
   System.out.println(x--); // 6 (luego 5)
-- **Relacionales:** `<`, `<=`, `>`, `>=`, `==`, '!='
+- **Relacionales:** `<`, `<=`, `>`, `>=`, `==`, `!=`
 - **Lógicos:** `&&`, `||`, `!`
-- **Asignación compuesta:** `+-`, `-=`, `*=`, `/=`
+  - AND ( `&&`) → devuelve `true` si ambas condiciones son verdaderas.
+  - OR (`||`) → devuelve `true` si al menos una condición es verdadera.
+  - NOT (`!`) → invierte el valor lógico (si era `true` pasa a `false`, y viceversa).
+    ```Java
+    int x = 5;
+    int y = 10;
+    
+    System.out.println(x > 0 && y > 0); // true
+    System.out.println(x > 0 || y < 0); // true
+    System.out.println(!(x > y));       // true
+    ```
+- **Asignación compuesta:** `+=`, `-=`, `*=`, `/=`
+  - `+=` → `x += 5;` es igual a `x = x + 5;`
+  - `-=` → `x -= 3;` es igual a `x = x - 3;`
+  - `*=` → `x *= 2;` es igual a `x = x * 2;`
+  - `/=` → `x /= 4;` es igual a `x = x / 4;`
+  - `%=` → `x %= 2;` es igual a `x = x % 2;`
 - **Casting:** `(int) 3.7` -> `3`
-
+  - casting implícito (widening) : El compilador convierte automáticamente un tipo más pequeño en uno más grande (no hay pérdida de datos).
+    ```java
+    int x = 10;
+    double y = x; // int → double (automático)
+    ```
+  - Casting Explícito (Narrowing) : Se fuerza la conversión de un tipo más grande a uno más pequeño (puede haber pérdida de información).
+    ```Java
+    double a = 9.7;
+    int b = (int) a; // double → int (pierde decimales, b = 9)
+    ```
+  - Ejemplo completo
+    ```Java
+    public class CastingExample {
+      public static void main(String[] args) {
+            int i = 100;
+            double d = i;         // implícito
+            System.out.println(d); // 100.0
+    
+            double x = 55.55;
+            int y = (int) x;      // explícito
+            System.out.println(y); // 55
+        }
+    }
+    ```
 ## Sentencias de control 
 - **if-else**
   ```Java
